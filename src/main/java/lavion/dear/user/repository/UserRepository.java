@@ -1,6 +1,6 @@
-package lavion.dear.users.repository;
+package lavion.dear.user.repository;
 
-import lavion.dear.users.model.User;
+import lavion.dear.user.model.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

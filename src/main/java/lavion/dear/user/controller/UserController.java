@@ -1,8 +1,8 @@
-package lavion.dear.users.controller;
+package lavion.dear.user.controller;
 
-import lavion.dear.users.dto.UserRequest;
-import lavion.dear.users.dto.UserResponse;
-import lavion.dear.users.service.UserService;
+import lavion.dear.user.dto.UserRequest;
+import lavion.dear.user.dto.UserResponse;
+import lavion.dear.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +30,7 @@ public class UserController {
     }
 
     @PutMapping("/{userName}")
-    public ResponseEntity<UserResponse> updateUser(
+    public ResponseEntity<UserResponse> update(
             @PathVariable String userName,
             @RequestBody @Valid UserRequest userRequest) {
         return service.updateUser(userName, userRequest)
@@ -39,26 +39,22 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<UserResponse>> getAllUsers() {
+    public ResponseEntity<List<UserResponse>> getAll() {
         List<UserResponse> responseList = service.getAllUsers();
         return ResponseEntity.ok(responseList);
     }
 
     @GetMapping("/{username}")
-    public ResponseEntity<UserResponse> getUser(@PathVariable String username) {
+    public ResponseEntity<UserResponse> get(@PathVariable String username) {
         return service.getUser(username)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{username}")
-    public ResponseEntity<UserResponse> deleteUser(@PathVariable String username) {
+    public ResponseEntity<UserResponse> delete(@PathVariable String username) {
         return service.deleteUser(username)
                 .map(resp -> ResponseEntity.ok(resp))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
-
-
-
-
 }

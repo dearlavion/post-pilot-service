@@ -1,4 +1,4 @@
-package lavion.dear.users.dto;
+package lavion.dear.user.dto;
 
 import lavion.dear.notification.model.NotificationChannel;
 import lombok.Getter;
@@ -7,10 +7,9 @@ import lombok.Setter;
 
 import java.util.List;
 
-
 @Getter
 @Setter
-public class UserResponse {
+public class UserDTO {
     @NonNull
     private String userName;
     private String firstName;

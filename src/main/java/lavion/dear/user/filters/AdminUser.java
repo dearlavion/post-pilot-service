@@ -1,6 +1,6 @@
-package lavion.dear.users.filters;
+package lavion.dear.user.filters;
 
-import lavion.dear.users.dto.UserRequest;
+import lavion.dear.user.dto.UserRequest;
 
 public class AdminUser implements BaseUser {
     @Override

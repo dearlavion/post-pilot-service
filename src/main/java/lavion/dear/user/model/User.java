@@ -1,18 +1,18 @@
-package lavion.dear.users.dto;
+package lavion.dear.user.model;
 
 import lavion.dear.notification.model.NotificationChannel;
-import lombok.Data;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-
+@Document(collection = "users")
 @Getter
 @Setter
-public class UserRequest {
-    @NonNull
+public class User {
+    @Id
     private String userName;
     private String firstName;
     private String lastName;

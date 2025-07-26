@@ -1,10 +1,10 @@
-package lavion.dear.users.service;
+package lavion.dear.user.service;
 
-import lavion.dear.users.dto.UserResponse;
-import lavion.dear.users.mapper.UserMapper;
-import lavion.dear.users.model.User;
-import lavion.dear.users.repository.UserRepository;
-import lavion.dear.users.dto.UserRequest;
+import lavion.dear.user.dto.UserResponse;
+import lavion.dear.user.mapper.UserMapper;
+import lavion.dear.user.model.User;
+import lavion.dear.user.repository.UserRepository;
+import lavion.dear.user.dto.UserRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,17 +25,17 @@ public class UserServiceImpl implements UserService {
             System.out.println("Existing user: "+userRequest.getUserName());
         }
 
-        User user = mapper.toUser(userRequest);
+        User user = mapper.toEntity(userRequest);
         User saved = repository.save(user);
-        return mapper.toUserResponse(saved);
+        return (UserResponse) mapper.toDtoResponse(saved);
     }
 
     @Override
     public Optional<UserResponse> updateUser(String userName, UserRequest userRequest) {
         return repository.findById(userName).map(user -> {
-            mapper.update(userRequest, user);
+            mapper.updateEntityFromDtoRequest(userRequest, user);
             User saved = repository.save(user);
-            return mapper.toUserResponse(saved);
+            return (UserResponse) mapper.toDtoResponse(saved);
         });
     }
 
@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<UserResponse> getUser(String userName) {
         return repository.findById(userName)
-                .map(mapper::toUserResponse);
+                .map(user -> (UserResponse) mapper.toDtoResponse(user));
     }
 
     @Override
@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
         return repository.findById(username)
                 .map(user -> {
                     repository.deleteById(username);
-                    return mapper.toUserResponse(user);
+                    return (UserResponse) mapper.toDtoResponse(user);
                 });
     }
 }

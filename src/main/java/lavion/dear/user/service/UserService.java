@@ -1,7 +1,7 @@
-package lavion.dear.users.service;
+package lavion.dear.user.service;
 
-import lavion.dear.users.dto.UserRequest;
-import lavion.dear.users.dto.UserResponse;
+import lavion.dear.user.dto.UserRequest;
+import lavion.dear.user.dto.UserResponse;
 
 import java.util.List;
 import java.util.Optional;

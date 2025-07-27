@@ -32,6 +32,16 @@
             <artifactId>springdoc-openapi-ui</artifactId>
             <version>1.6.14</version> <!-- Springboot 2.X.X compatible -->
         </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>5.1.5.RELEASE</version> <!-- Compatible version for Spring Boot 2.1.1 -->
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>5.1.5.RELEASE</version> <!-- Compatible version for Spring Boot 2.1.1 -->
+        </dependency>
 
         <!-- DB -->
         <dependency>

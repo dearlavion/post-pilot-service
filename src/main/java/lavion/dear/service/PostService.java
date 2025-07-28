@@ -1,16 +1,18 @@
 package lavion.dear.service;
 
 import lavion.dear.dto.post.PostDTO;
+import lavion.dear.dto.post.PostRequest;
+import lavion.dear.dto.post.PostResponse;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface PostService {
-    PostDTO.PostResponse createPost(PostDTO.PostRequest postRequest);
+    PostResponse createPost(PostRequest postRequest);
 
-    Optional<PostDTO.PostResponse> updatePost(String id, PostDTO.PostRequest postRequest);
+    Optional<PostResponse> updatePost(String id, PostRequest postRequest);
 
-    List<PostDTO.PostResponse> getPost(String fieldName, String fieldValue);
+    List<PostResponse> getPost(String fieldName, String fieldValue);
 
-    Optional<PostDTO.PostResponse> deletePost(String id);
+    Optional<PostResponse> deletePost(String id);
 }

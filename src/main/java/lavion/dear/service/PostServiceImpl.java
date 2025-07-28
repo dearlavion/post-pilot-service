@@ -1,6 +1,7 @@
 package lavion.dear.service;
 
-import lavion.dear.dto.post.PostDTO;
+import lavion.dear.dto.post.PostRequest;
+import lavion.dear.dto.post.PostResponse;
 import lavion.dear.mapper.PostMapper;
 import lavion.dear.model.Post;
 import lavion.dear.repository.PostRepository;
@@ -35,35 +36,35 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public PostDTO.PostResponse createPost(PostDTO.PostRequest postRequest) {
+    public PostResponse createPost(PostRequest postRequest) {
         Post post = mapper.toEntity(postRequest);
         Post saved = repository.save(post);
-        return (PostDTO.PostResponse) mapper.toDtoResponse(saved);
+        return  mapper.toPostResponse(saved);
 
     }
 
     @Override
-    public Optional<PostDTO.PostResponse> updatePost(String id, PostDTO.PostRequest postRequest) {
+    public Optional<PostResponse> updatePost(String id, PostRequest postRequest) {
         return repository.findById(id).map(post -> {
             mapper.updateEntityFromDtoRequest(postRequest, post);
             Post saved = repository.save(post);
-            return (PostDTO.PostResponse) mapper.toDtoResponse(saved);
+            return mapper.toPostResponse(saved);
         });
     }
 
     @Override
-    public List<PostDTO.PostResponse> getPost(String fieldName, String fieldValue) {
+    public List<PostResponse> getPost(String fieldName, String fieldValue) {
         Query query = new Query();
         query.addCriteria(Criteria.where(fieldName).is(fieldValue));
-        return mongoTemplate.find(query, PostDTO.PostResponse.class);
+        return mongoTemplate.find(query, PostResponse.class);
     }
 
     @Override
-    public Optional<PostDTO.PostResponse> deletePost(String id) {
+    public Optional<PostResponse> deletePost(String id) {
         return repository.findById(id)
                 .map(post -> {
                     repository.deleteById(id);
-                    return (PostDTO.PostResponse) mapper.toDtoResponse(post);
+                    return mapper.toPostResponse(post);
                 });
     }
 }

@@ -18,14 +18,4 @@ public class PostDTO {
     private boolean isPostSuccess;
     private String postOwner;
     private LocalDateTime dateTimePosted;
-
-    @Getter
-    @Setter
-    public static class PostRequest extends PostDTO {
-    }
-
-    @Getter
-    @Setter
-    public static class PostResponse extends PostDTO {
-    }
 }

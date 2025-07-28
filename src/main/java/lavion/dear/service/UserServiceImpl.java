@@ -6,6 +6,7 @@ import lavion.dear.model.User;
 import lavion.dear.repository.UserRepository;
 import lavion.dear.dto.user.UserRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository repository;
+    private final PasswordEncoder passwordEncoder;
     private final UserMapper mapper;
 
     @Override
@@ -23,11 +25,15 @@ public class UserServiceImpl implements UserService {
         //check for username uniqueness
         if (repository.existsById(userRequest.getUserName())) {
             System.out.println("Existing user: "+userRequest.getUserName());
+            return null;
         }
 
         User user = mapper.toEntity(userRequest);
+        if (userRequest.getPassword() != null) {
+            user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
+        }
         User saved = repository.save(user);
-        return (UserResponse) mapper.toDtoResponse(saved);
+        return mapper.toUserResponse(saved);
     }
 
     @Override
@@ -35,7 +41,7 @@ public class UserServiceImpl implements UserService {
         return repository.findById(userName).map(user -> {
             mapper.updateEntityFromDtoRequest(userRequest, user);
             User saved = repository.save(user);
-            return (UserResponse) mapper.toDtoResponse(saved);
+            return mapper.toUserResponse(saved);
         });
     }
 
@@ -48,7 +54,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<UserResponse> getUser(String userName) {
         return repository.findById(userName)
-                .map(user -> (UserResponse) mapper.toDtoResponse(user));
+                .map(user -> mapper.toUserResponse(user));
     }
 
     @Override
@@ -56,7 +62,12 @@ public class UserServiceImpl implements UserService {
         return repository.findById(username)
                 .map(user -> {
                     repository.deleteById(username);
-                    return (UserResponse) mapper.toDtoResponse(user);
+                    return mapper.toUserResponse(user);
                 });
+    }
+
+    @Override
+    public boolean existByUserName(String userName) {
+        return repository.existsByUserName(userName);
     }
 }

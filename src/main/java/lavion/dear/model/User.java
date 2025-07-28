@@ -1,5 +1,7 @@
 package lavion.dear.model;
 
+import lavion.dear.enums.NotificationChannel;
+import lavion.dear.enums.UserRole;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
@@ -13,8 +15,8 @@ import java.util.List;
 public class User {
     @Id
     private String userName;
-    private String firstName;
-    private String lastName;
-    private List<Notification> notifications;
-    private boolean isAdmin;
+    private String name;
+    private String password;
+    private List<UserRole> roles;
+    private List<NotificationChannel> notificationChannels;
 }

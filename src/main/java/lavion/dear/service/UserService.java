@@ -17,5 +17,7 @@ public interface UserService {
 
     Optional<UserResponse> deleteUser(String userName);
 
+    boolean existByUserName(String userName);
+
 
 }

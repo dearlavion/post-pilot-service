@@ -1,6 +1,7 @@
 package lavion.dear.dto.user;
 
-import lavion.dear.model.Notification;
+import lavion.dear.enums.NotificationChannel;
+import lavion.dear.enums.UserRole;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -12,8 +13,8 @@ import java.util.List;
 public class UserDTO {
     @NonNull
     private String userName;
-    private String firstName;
-    private String lastName;
-    private List<Notification> notifications;
-    private boolean isAdmin;
+    private String name;
+    private String password;
+    private List<UserRole> roles;
+    private List<NotificationChannel> notificationChannels;
 }

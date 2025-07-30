@@ -1,6 +1,5 @@
 package lavion.dear.controller;
 
-import lavion.dear.dto.post.PostDTO;
 import lavion.dear.dto.post.PostRequest;
 import lavion.dear.dto.post.PostResponse;
 import lavion.dear.service.PostService;
@@ -12,6 +11,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/posts")
@@ -19,6 +19,12 @@ import java.util.List;
 public class PostController {
 
     private final PostService service;
+
+    @PostMapping("/form-submit")
+    public ResponseEntity<String> handleForm(@RequestBody Map<String, Object> payload) {
+        System.out.println("Received: " + payload);
+        return ResponseEntity.ok("Received");
+    }
 
     @PostMapping
     public ResponseEntity<PostResponse> create(@Valid @RequestBody PostRequest postRequest) {

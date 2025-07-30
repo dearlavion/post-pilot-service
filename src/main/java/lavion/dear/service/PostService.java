@@ -1,6 +1,5 @@
 package lavion.dear.service;
 
-import lavion.dear.dto.post.PostDTO;
 import lavion.dear.dto.post.PostRequest;
 import lavion.dear.dto.post.PostResponse;
 

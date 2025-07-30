@@ -18,5 +18,19 @@ Connection String:
 ----
 Access Swagger on local
 ----
-http://localhost:<port>/swagger-ui.html
+> http://localhost:localport/swagger-ui.html
 http://localhost:9999/swagger-ui.html
+
+---
+ngrok
+---
+Pre-requisite: download ngrok and signup to get token
+1. execute command:
+> ngrok config add-authtoken 30YMR2ia6phQ4XdQD73N9PAdFGw_7rwkaGMtMgGtzdt2cdcZX
+
+> ngrok http http://localhost:9999
+
+2. Then access it via web
+>Ex. swagger endpoint (Note: generated url is from ngrok)
+
+> https://51bed39203b5.ngrok-free.app/swagger-ui/index.html

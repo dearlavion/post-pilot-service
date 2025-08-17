@@ -5,6 +5,10 @@ services:
     build: .
     ports:
       - "9999:9999"
+    networks:
+      - app-network
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
     depends_on:
       - mongo
 
@@ -13,7 +17,9 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - mongo_data:/data/db
+      - "C:/mongo_data:/data/db"
+    networks:
+      - app-network
 
-volumes:
-  mongo_data:
+networks:
+  app-network:

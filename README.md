@@ -70,3 +70,13 @@ Pre-requisite: download ngrok and signup to get token
 >Ex. swagger endpoint (Note: generated url is from ngrok)
 
 > https://51bed39203b5.ngrok-free.app/swagger-ui/index.html
+
+---
+Web Server (Docker)
+---
+Pre-req: Docker desktop should be running before executing
+1. Manual:
+> docker build -t post-pilot-service .
+> docker run -p 9999:9999 post-pilot-service
+2. Automate:
+> docker-compose up --build

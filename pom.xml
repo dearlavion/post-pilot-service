@@ -17,7 +17,8 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.1.RELEASE</version> <!-- use latest stable -->
+        <version>2.7.18</version> <!-- LATEST in 2.x -->
+        <!-- <version>2.1.1.RELEASE</version>  use latest stable -->
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -74,7 +75,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.1.1.RELEASE</version> <!-- use your Spring Boot version -->
+                <version>2.7.18</version> <!-- use your Spring Boot version -->
                 <executions>
                     <execution>
                         <goals>

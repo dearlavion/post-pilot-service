@@ -72,7 +72,7 @@ Pre-requisite: download ngrok and signup to get token
 > https://51bed39203b5.ngrok-free.app/swagger-ui/index.html
 
 ---
-Web Server (Docker)
+Container (Docker)
 ---
 Pre-req: Docker desktop should be running before executing
 1. Manual:

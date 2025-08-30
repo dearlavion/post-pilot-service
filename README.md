@@ -8,14 +8,14 @@ About
 ---
 Post Pilot helps you automatically share your posts to multiple social media platforms — saving time and effort.
 
-It supports two main posting methods:
+It supports three main posting methods:
 
-> A. Batch Post
-- Post multiple items all at once.
+> A. Quick Post
+- Post single item at this instant
 
 How it works:
 
-1. Upload a file with a list of posts
+1. Create a single post
 
 2. Select which social media platforms to post to
 
@@ -23,7 +23,21 @@ How it works:
 
 4. The system sends the posts and notifies the admin if each post was successful or failed
 
-> B. Scheduled Post
+
+> B. Batch Post
+- Post multiple items all at once every 12 AM.
+
+How it works:
+
+1. Upload a file with a list of posts
+
+2. Select which social media platforms to post to
+
+3. Click "Post at 12AM"
+
+4. The system sends the posts and notifies the admin if each post was successful or failed
+
+> C. Scheduled Post
 - Post a single item at a specific time in the future.
 
 How it works:
